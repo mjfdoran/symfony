@@ -4,8 +4,8 @@ the local url for the site can be anything. For example:
 symfonyapi.local
 
 WHY LARAVEL
-For an application this size I could have possible used a smaller framework but might have required more work structuring
-the routes and controllers. I decided to pick Laravel because i’m familiar with it.
+For an application this size I could have possible used a smaller framework but that might have required more work structuring
+the routes and controllers. I decided to pick Laravel because I’m familiar with it.
 
 WHERE MY CODE IS
 app/Symfony/* (This is where most of my code is)
@@ -40,5 +40,5 @@ become messy.
 HOW MY PAST WORK EXPERIENCES RELATE TO THIS TASK AND HOW THEY HAVE INFLUENCED MY SOLUTION
 In the past have not used a http client like guzzle and tried to get the api data using curl. I learnt that it’s much
 better to use a tried and tested library that takes away some of the complexities. I often look for a library to do a
-specific job to avoid witting something that has already been written. I have also an effort for the controller
+specific job to avoid witting something that has already been written. I have also made an effort for the controller
 to control/dictate and not to actually do things itself.
