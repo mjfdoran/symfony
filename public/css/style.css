@@ -1,0 +1,9 @@
+.pagination{
+    min-width: 100%
+}
+.next-link{
+    float: right;
+}
+.previous-link{
+    float: left;
+}

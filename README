@@ -1,0 +1,44 @@
+READ ME
+the index file lies in the public directory /public
+the local url for the site can be anything. For example:
+symfonyapi.local
+
+WHY LARAVEL
+For an application this size I could have possible used a smaller framework but might have required more work structuring
+the routes and controllers. I decided to pick Laravel because i’m familiar with it.
+
+WHERE MY CODE IS
+app/Symfony/* (This is where most of my code is)
+app/http/Controllers/SymfonyController.php
+resources/view/*
+app/Http/routes.php
+
+SCALABILITY AND STRUCTURE OF MY CODE
+I have tried to keep all the intricacies of guzzle in the Guzzle.php class so that whenever I need to use
+another httpClient I can. The GitHubApi class implements the Api Interface. This means that if the Symfony project
+were to move to bit bucket for example I would only need to create a bitbucket class that implements the functions from
+the ApiInterface. I would also have to make some changes in the views. The Exception handler class is a singleton
+allowing the Guzzle.php class to log errors and the SymfonyController to fetch them without having to pass the object
+around or instantiate it again subsequently loosing any error messages. When logging an error only the message and code
+are needed so this class could be used throughout a larger application. I do catch any gulp exceptions and log them. I
+also display a client friendly error message on the page without compromising security. Any recurring html css, tables,
+have not been repeated in the blade templates.
+
+HOW I COULD TEST MY CODE
+If I were to write some tests for my code i would call getInstance on my ExceptionHandler class, adding a message and
+then calling getInstance and then checking the messages were the same. I would test calling the api with no internet.
+Calling the api with incorrect pagination values. I would write test to check that the next and previous are true and
+false when they should be depending on which page is requested. I would also test bad urls, double checking the
+responses are being logged on the server side. The things above I have tested but not as unit tests.
+
+WHY I FEEL THIS IS A GOOD SOLUTION
+I feel like this is a good solution because of the controller is the class that knows which specific api to use.
+The Git hub api the uses guzzle. I could make a bitbucket api class that could still use guzzle. Or github api could
+use another http client other than guzzle. I feel like the structure of the code allows for the api to grow and not
+become messy.
+
+HOW MY PAST WORK EXPERIENCES RELATE TO THIS TASK AND HOW THEY HAVE INFLUENCED MY SOLUTION
+In the past have not used a http client like guzzle and tried to get the api data using curl. I learnt that it’s much
+better to use a tried and tested library that takes away some of the complexities. I often look for a library to do a
+specific job to avoid witting something that has already been written. I have also an effort for the controller
+to control/dictate and not to actually do things itself.
